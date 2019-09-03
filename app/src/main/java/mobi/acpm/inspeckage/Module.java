@@ -51,14 +51,14 @@ public class Module extends XC_MethodHook implements IXposedHookLoadPackage, IXp
     public static final String MY_PACKAGE_NAME = Module.class.getPackage().getName();
 
     public void initZygote(StartupParam startupParam) throws Throwable {
-        sPrefs = new XSharedPreferences(MY_PACKAGE_NAME, PREFS);
-        sPrefs.makeWorldReadable();
+        sPrefs = new XSharedPreferences(MY_PACKAGE_NAME, PREFS);    //file :/data/data/mobi.acpm.inspeckage/shared_prefs/InspeckagePrefs.xml
+        sPrefs.makeWorldReadable();                                 //make xml readable when init;
     }
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
 
-        sPrefs.reload();
+        sPrefs.reload();                                            //reload InspeckagePrefs.xml file when it changes;
 
         //check if this module is enable
         if (loadPackageParam.packageName.equals("mobi.acpm.inspeckage")) {
@@ -81,10 +81,10 @@ public class Module extends XC_MethodHook implements IXposedHookLoadPackage, IXp
                     });
         }
 
-        if (loadPackageParam.packageName.equals("mobi.acpm.inspeckage"))
+        if (loadPackageParam.packageName.equals("mobi.acpm.inspeckage"))                             //don't hook itself
             return;
 
-        if (!loadPackageParam.packageName.equals(sPrefs.getString("package", "")))
+        if (!loadPackageParam.packageName.equals(sPrefs.getString("package", "")))      //if packageName != InspeckagePrefs<"package"> then return
             return;
 
         //inspeckage needs access to the files
