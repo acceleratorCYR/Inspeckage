@@ -48,6 +48,7 @@ public class Module extends XC_MethodHook implements IXposedHookLoadPackage, IXp
     public static final String ERROR = "Inspeckage_Error";
     public static XSharedPreferences sPrefs;
 
+    //TODO: try put sharedPackagePrefs Into file or database
     public static final String MY_PACKAGE_NAME = Module.class.getPackage().getName();
 
     public void initZygote(StartupParam startupParam) throws Throwable {
@@ -65,32 +66,36 @@ public class Module extends XC_MethodHook implements IXposedHookLoadPackage, IXp
             findAndHookMethod("mobi.acpm.inspeckage.webserver.WebServer", loadPackageParam.classLoader, "isModuleEnabled", XC_MethodReplacement.returnConstant(true));
 
             //workaround to bypass MODE_PRIVATE of shared_prefs
+            //try to change file MOD after xml file changed and writed to disk.
             findAndHookMethod("android.app.SharedPreferencesImpl.EditorImpl", loadPackageParam.classLoader, "notifyListeners",
                     "android.app.SharedPreferencesImpl.MemoryCommitResult", new XC_MethodHook() {
 
                         protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                             //workaround to bypass the concurrency (io)
-                            Handler handler = new Handler(Looper.getMainLooper());
+                            Handler handler = new Handler(Looper.getMainLooper());                  //get Looper of main Thread
                             handler.postDelayed(new Runnable() {
-                                public void run() {
+                                public void run() {                                                //call this 1 sec later to fix unreadable of InspeckagePrefs.xml ,  why Delay?
                                     Context context = (Context) AndroidAppHelper.currentApplication();
-                                    FileUtil.fixSharedPreference(context);
+                                    FileUtil.fixSharedPreference(context);                          //it's too complex;
                                 }
                             }, 1000);
                         }
                     });
         }
 
-        if (loadPackageParam.packageName.equals("mobi.acpm.inspeckage"))                             //don't hook itself
+        //don't hook itself
+        if (loadPackageParam.packageName.equals("mobi.acpm.inspeckage"))
             return;
 
-        if (!loadPackageParam.packageName.equals(sPrefs.getString("package", "")))      //if packageName != InspeckagePrefs<"package"> then return
+        //if currentPackageName != InspeckagePrefs<"package"> then return
+        if (!loadPackageParam.packageName.equals(sPrefs.getString("package", "")))
             return;
 
-        //inspeckage needs access to the files
+        //inspeckage needs access to the Dir of app for hook
         File folder = new File(sPrefs.getString(Config.SP_DATA_DIR, null));
         folder.setExecutable(true, false);
 
+        //Put
         findAndHookMethod("android.util.Log", loadPackageParam.classLoader, "i",
                 String.class, String.class, new XC_MethodHook() {
 
