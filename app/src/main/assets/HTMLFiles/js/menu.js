@@ -160,3 +160,4 @@ var shown = true;
       $(this).customerPopup(e);
     });
   });
+

@@ -422,6 +422,7 @@ public class WebServer extends fi.iki.elonen.NanoHTTPD {
         if (!isModuleEnabled()) {
             moduleEnable = "<font style=\"color:red; background:yellow;\">false</font>";
         }
+        //replace isInspeckageValue enabled in Xposed
         html = html.replace("#moduleEnable#", moduleEnable);
         html = replaceHtmlVariables(html);
 
