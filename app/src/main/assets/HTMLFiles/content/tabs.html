@@ -251,7 +251,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('prefs');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('prefs', 'badge_sharedPreferences');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -281,7 +281,7 @@
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <button type="button" onclick="clearLog('serialization');" class="btn btn-default btn-xs">
+                    <button type="button" onclick="clearLog('serialization', 'badgeSerialization');" class="btn btn-default btn-xs">
                         <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                     </button>
                 </div>
@@ -295,7 +295,7 @@
     <div role="tabpanel" class="tab-pane fade" id="Crypto">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('crypto');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('crypto', 'badgeCrypto');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -308,7 +308,7 @@
     <div role="tabpanel" class="tab-pane fade" id="Hash">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('hash');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('hash', 'badgeHash');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -324,7 +324,7 @@
                 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal2">
                     <i class="fa fa-database" aria-hidden="true"></i> Query Provider
                 </button>
-                <button type="button" onclick="clearLog('sqlite');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('sqlite','badgeSqlite');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -337,7 +337,7 @@
     <div role="tabpanel" class="tab-pane fade" id="ipc">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('ipc');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('ipc','badgeIpc');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -350,7 +350,7 @@
     <div role="tabpanel" class="tab-pane fade" id="fileSystem">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('fs');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('fs', 'badgeFs');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -363,7 +363,7 @@
     <div role="tabpanel" class="tab-pane fade" id="http">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('http');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('http', 'badgeHttp');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -376,7 +376,7 @@
     <div role="tabpanel" class="tab-pane fade" id="webView">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('webview');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('webview', 'badgeWeb');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -389,7 +389,7 @@
     <div role="tabpanel" class="tab-pane fade" id="misc">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <button type="button" onclick="clearLog('misc');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('misc','badgeMisc');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>
@@ -408,7 +408,7 @@
                 <button type="button" onclick="loadReplaces();" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal5">
                     <i class="fa fa-cog" aria-hidden="true"></i> Replaces
                 </button>
-                <button type="button" onclick="clearLog('userhooks');" class="btn btn-default btn-xs">
+                <button type="button" onclick="clearLog('userhooks', 'badgeHooks');" class="btn btn-default btn-xs">
                     <i class="fa fa-trash-o" aria-hidden="true"></i> Clear
                 </button>
             </div>

@@ -292,7 +292,7 @@ function loadReplaces() {
     $("#replace-content").load("/content/replace.html");
 };
 
-function clearLog(h) {
+function clearLog(h, badge) {
 
     var value = confirm("Are you sure?");
     if (value) {
@@ -303,7 +303,8 @@ function clearLog(h) {
 
         });
 
-        $("#badgeHooks").text("");
+        $('#'+ badge).text("");
+        /*$("#badgeHooks").text("");*/
         $('#'+h+'1').load('?type=file&value='+h+'&count=-1');
         setCookie(h, "-2", 1);
     }

@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 $("#nav_tbs").on("click", function() {
     $("#tbs-content").load("/content/tabs.html");
-    $("[name='refresh']").bootstrapSwitch('state', true);
+    $("[name='refresh']").bootstrapSwitch('state', false);
 });
 
 $("#nav_replaces").on("click", function() {
