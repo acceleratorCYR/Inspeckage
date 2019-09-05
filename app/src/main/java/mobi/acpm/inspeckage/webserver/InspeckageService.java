@@ -104,7 +104,7 @@ public class InspeckageService extends Service {
             //新建Builer对象
             Notification.Builder builer = new Notification.Builder(this);
             if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                builer.setChannelId("com.primedu.cn");
+                builer.setChannelId(CHANNEL_ONE_ID);
             }
 
             builer.setContentTitle("WebService");//设置通知的标题
