@@ -669,6 +669,7 @@ public class WebServer extends fi.iki.elonen.NanoHTTPD {
     }
 
     private Response stopWS() {
+        Log.e("Inspeckage", "WebServer.stopWS()");
         mContext.stopService(new Intent(mContext, LogService.class));
         return ok("OK");
     }

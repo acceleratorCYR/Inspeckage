@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -197,6 +198,7 @@ public class ConfigFragment extends Fragment {
     }
 
     public void startService(String host, int port) {
+        Log.e("Inspeckage", "ConfigFragment.startService()");
         Intent i = new Intent(context, InspeckageService.class);
         i.putExtra("port", port);
         i.putExtra("host", host);
@@ -205,6 +207,7 @@ public class ConfigFragment extends Fragment {
     }
 
     public void stopService() {
+        Log.e("Inspeckage", "ConfigFragment.stopService()");
         context.stopService(new Intent(context, InspeckageService.class));
         context.stopService(new Intent(context, LogService.class));
     }

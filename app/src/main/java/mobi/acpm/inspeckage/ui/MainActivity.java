@@ -3,6 +3,7 @@ package mobi.acpm.inspeckage.ui;
 import android.Manifest;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -15,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -35,6 +37,18 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SharedPreferences mPrefs;
+
+    @Override
+    public ComponentName startService(Intent service) {
+        Log.i("Inspeckage", "MainActivity.startService()");
+        return super.startService(service);
+    }
+
+    @Override
+    public boolean stopService(Intent name) {
+        Log.i("Inspeckage", "MainActivity.stopService()");
+        return super.stopService(name);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +153,7 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public void onBackPressed() {
+        Log.e("Inspeckage", "MainActivity.onBackPressed");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         int count = getFragmentManager().getBackStackEntryCount();
 
@@ -234,6 +249,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void stopService() {
+        Log.e("Inspeckage", "MainActivity.stopService()");
         stopService(new Intent(this, InspeckageService.class));
     }
 

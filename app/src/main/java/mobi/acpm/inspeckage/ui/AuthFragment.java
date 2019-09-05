@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -212,6 +213,7 @@ public class AuthFragment extends Fragment {
 
     public void startService(String host, int port) {
         Intent i = new Intent(context, InspeckageService.class);
+        Log.e("Inspeckage", "AuthFragment.startService()");
         i.putExtra("port", port);
         i.putExtra("host", host);
 
@@ -219,6 +221,7 @@ public class AuthFragment extends Fragment {
     }
 
     public void stopService() {
+        Log.e("Inspeckage", "AuthFragment.stopService()");
         context.stopService(new Intent(context, InspeckageService.class));
         context.stopService(new Intent(context, LogService.class));
     }

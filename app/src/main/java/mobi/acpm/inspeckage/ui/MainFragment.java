@@ -240,6 +240,31 @@ public class MainFragment extends Fragment {
     //----------------------------------------------METHODS--------------------------------------
 
     public void startService(String host, int port) {
+        Throwable th = new Throwable();
+        StackTraceElement[] stackTraces = th.getStackTrace();
+
+        StringBuffer stackOutput = new StringBuffer("monitor MainFragment.startService() ");
+
+        if(stackTraces != null)
+        {
+            int i = 0;
+            for(; i< (stackTraces.length < 22? stackTraces.length: 22); i++)
+            {
+                stackOutput.append(String.format("\n      StackTrace: %s #%s :%s",
+                        stackTraces[i].getClassName(),
+                        stackTraces[i].getMethodName(), stackTraces[i].getLineNumber()));
+                if(stackTraces[i].getClassName().endsWith("Log"))
+                    break;
+
+            }
+            if(i >= 22)
+            {
+                stackOutput.append("\n      ......   ...... \n");
+            }
+        }
+        Log.i("Inspeckage", stackOutput.toString());
+
+        Log.e("Inspeckage", "MainFragment.startService()");
         Intent i = new Intent(context, InspeckageService.class);
         i.putExtra("port", port);
         i.putExtra("host", host);
@@ -248,6 +273,7 @@ public class MainFragment extends Fragment {
     }
 
     public void stopService() {
+        Log.e("Inspeckage", "MainFragment.stopService()");
         context.stopService(new Intent(context, InspeckageService.class));
     }
 
