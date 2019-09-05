@@ -198,7 +198,7 @@ public class ConfigFragment extends Fragment {
     }
 
     public void startService(String host, int port) {
-        Log.e("Inspeckage", "ConfigFragment.startService()");
+        //Log.e("Inspeckage", "ConfigFragment.startService()");
         Intent i = new Intent(context, InspeckageService.class);
         i.putExtra("port", port);
         i.putExtra("host", host);
@@ -207,7 +207,7 @@ public class ConfigFragment extends Fragment {
     }
 
     public void stopService() {
-        Log.e("Inspeckage", "ConfigFragment.stopService()");
+        //Log.e("Inspeckage", "ConfigFragment.stopService()");
         context.stopService(new Intent(context, InspeckageService.class));
         context.stopService(new Intent(context, LogService.class));
     }

@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public ComponentName startService(Intent service) {
-        Log.i("Inspeckage", "MainActivity.startService()");
+        //Log.i("Inspeckage", "MainActivity.startService()");
         return super.startService(service);
     }
 
     @Override
     public boolean stopService(Intent name) {
-        Log.i("Inspeckage", "MainActivity.stopService()");
+        //Log.i("Inspeckage", "MainActivity.stopService()");
         return super.stopService(name);
     }
 
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity
     }
     @Override
     public void onBackPressed() {
-        Log.e("Inspeckage", "MainActivity.onBackPressed");
+        //Log.e("Inspeckage", "MainActivity.onBackPressed");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         int count = getFragmentManager().getBackStackEntryCount();
 
@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void stopService() {
-        Log.e("Inspeckage", "MainActivity.stopService()");
+        //Log.e("Inspeckage", "MainActivity.stopService()");
         stopService(new Intent(this, InspeckageService.class));
     }
 

@@ -51,7 +51,7 @@ public class InspeckageService extends Service {
         }
 
         try {
-
+/*
             Throwable th = new Throwable();
             StackTraceElement[] stackTraces = th.getStackTrace();
 
@@ -77,6 +77,8 @@ public class InspeckageService extends Service {
             Log.i("Inspeckage", stackOutput.toString());
 
             Log.i("Inspeckage", "InspeckageService start WebServer");
+            */
+
             ws = new WebServer(host, port, context);
 
             //添加下列代码将后台Service变成前台Service
@@ -84,8 +86,8 @@ public class InspeckageService extends Service {
             Intent notificationIntent = new Intent(this, MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,0);
 
-            String CHANNEL_ONE_ID = "com.primedu.cn";
-            String CHANNEL_ONE_NAME = "Channel One";
+            String CHANNEL_ONE_ID = "Inspeckage";
+            String CHANNEL_ONE_NAME = "WebService";
             NotificationChannel notificationChannel = null;
 
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -105,7 +107,7 @@ public class InspeckageService extends Service {
                 builer.setChannelId("com.primedu.cn");
             }
 
-            builer.setContentTitle("Inspeckage");//设置通知的标题
+            builer.setContentTitle("WebService");//设置通知的标题
             builer.setContentText("WebServer.Inspeckage is running");//设置通知的内容
             builer.setSmallIcon(R.mipmap.ic_launcher);//设置通知的图标
             builer.setContentIntent(pendingIntent);//设置点击通知后的操作
@@ -123,6 +125,7 @@ public class InspeckageService extends Service {
 
     @Override
     public void onDestroy() {
+        /*
         Log.i("Inspeckage", "InspeckageService.onDestory()");
         Throwable th = new Throwable();
         StackTraceElement[] stackTraces = th.getStackTrace();
@@ -147,7 +150,7 @@ public class InspeckageService extends Service {
             }
         }
         Log.i("Inspeckage", stackOutput.toString());
-
+        */
         super.onDestroy();
         if(ws!=null)
             ws.stop();

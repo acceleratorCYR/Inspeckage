@@ -213,7 +213,7 @@ public class AuthFragment extends Fragment {
 
     public void startService(String host, int port) {
         Intent i = new Intent(context, InspeckageService.class);
-        Log.e("Inspeckage", "AuthFragment.startService()");
+        //Log.e("Inspeckage", "AuthFragment.startService()");
         i.putExtra("port", port);
         i.putExtra("host", host);
 
@@ -221,7 +221,7 @@ public class AuthFragment extends Fragment {
     }
 
     public void stopService() {
-        Log.e("Inspeckage", "AuthFragment.stopService()");
+        //Log.e("Inspeckage", "AuthFragment.stopService()");
         context.stopService(new Intent(context, InspeckageService.class));
         context.stopService(new Intent(context, LogService.class));
     }
